@@ -1,3 +1,4 @@
+#load libraries
 library(tidyr)
 
 #Source function scripts
@@ -13,23 +14,20 @@ danger_levels <- unique(extinct_lang$Degree.of.endangerment)
 #vector of all countries present in countries column
 expanded_countries <- expand(extinct_lang, Countries)
 
-#loop for getting a list of all the individual spoken countries
+#list of each unique country
 spoken_countries <- c()
 
-for(i in 1:length(expanded_countries)) {
+#loop for getting a list of all the individual spoken countries
+#goes through every row of the extinct languages dataset
+for(i in 1:sapply(expanded_countries, NROW)) {
+  #convert each string into a list of seperated strings for each country
   instance_countries <- strsplit(expanded_countries[[1]][i], ", ")
-  for(j in 1:length(instance_countries)) {
-    if (!is.element(j + 1, spoken_countries)) {
-      spoken_countries <- c(spoken_countries, instance_countries[[3]][j])
-    }
-  }
-}
-
-for(country_list in 1:length(expanded_countries)) {
-  instance_countries <- strsplit(expanded_countries[[1]][country_list], ", ")
-  for(country in 1:length(instance_countries)) {
-    if(!is.element(instance_countries[[1]][country], spoken_countries)) {
-      spoken_countries <- c(spoken_countries, instance_countries[[1]][country])
+  #goes through every row of seperated countries
+  for(j in 1:sapply(instance_countries, NROW)) {
+    #checks if that country is already apart of the unique country vector
+    if (!is.element(j, spoken_countries)) {
+      #if its not, it adds it to the unique country vector
+      spoken_countries <- c(spoken_countries, instance_countries[[1]][j])
     }
   }
 }

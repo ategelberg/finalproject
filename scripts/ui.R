@@ -10,15 +10,15 @@ ui <- shinyUI(fluidPage(
   
   h1("Near Exctinct World Languages"),
   
-  p("The data that was used for this visualization talks about different langu
-      ages around the world that are close to being considered extinct."),
+  p("The data that was used for this visualization talks about different languages around the world that are close to being considered extinct."),
   
   h2("Filter"),
   
   selectInput("filter_countries",
               label = "Countries Spoken",
-              choices = spoken_countries,
-              selected = 1),
+              choices = sort(spoken_countries),
+              selected = 1,
+              multiple = TRUE),
   
   br(),
   
