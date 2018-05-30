@@ -7,7 +7,13 @@ source("world_map.R")
 
 #Read in data
 extinct_lang <- read.csv("../data/extinctlanguages.csv", stringsAsFactors = F)
+extinct_lang_cities <- read.csv("../data/languages_cities.csv", stringsAsFactors = F)
 countries<- read.csv(("../data/countries.csv"), stringsAsFactors = F)
+
+#merge datasets
+extinct_lang_merged <- left_join(extinct_lang, extinct_lang_cities, by = "ID")
+extinct_lang$City <- extinct_lang_merged$City
+extinct_lang$Country <- extinct_lang_merged$Country
 
 #Unique Endangerment
 danger_levels <- unique(extinct_lang$Degree.of.endangerment)

@@ -53,6 +53,8 @@ server <- shinyServer(function(input, output, session) {
       add_markers(
         text = ~paste(Name.in.English, 
                       Degree.of.endangerment,
+                      Country,
+                      City,
                       paste("Number of Speakers:", Number.of.speakers),
                       sep = "<br />"),
         color = ~Degree.of.endangerment, symbol = I("circle"), size = I(6), hoverinfo = "text"

@@ -38,10 +38,10 @@ ui <- shinyUI(fluidPage(
                                      "Extinct" = 5),
                       selected = c(1, 5)),
       
-      p(paste0("1: Vulernable",
-        "2: Definitely Endangered",
-        "3: Severely Endangered",
-        "4: Critically Endangered",
+      p(paste0("1: Vulernable, ",
+        "2: Definitely Endangered, ",
+        "3: Severely Endangered, ",
+        "4: Critically Endangered, ",
         "5: Extinct")),
       
       br(),
