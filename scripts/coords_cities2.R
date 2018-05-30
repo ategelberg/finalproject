@@ -23,8 +23,8 @@ cities <- cities %>%
 
 # This should work to make the cities dataframes lat and long columns numeric 
 # but it's not so....any new solution ideas?
-cities <- transform(cities, Latitude = as.numeric(Latitude))
-cities <- transform(cities, Longitude = as.numeric(Longitude))
+cities <- mutate(cities, Latitude = as.numeric(Latitude))
+cities <- mutate(cities, Longitude = as.numeric(Longitude))
 
 # Round dataframe values 
 cities <- mutate(cities, Latitude = round(Latitude, 1),
