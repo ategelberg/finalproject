@@ -1,5 +1,6 @@
 #load libraries
 library(tidyr)
+library(dplyr)
 
 #Source function scripts
 source("coords2country.R")
