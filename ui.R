@@ -3,7 +3,7 @@ library(shiny)
 library(shinyWidgets)
 
 #Source analysis file
-source("analysis.R")
+source("scripts/analysis.R")
 
 #Define UI
 ui <- shinyUI(fluidPage(

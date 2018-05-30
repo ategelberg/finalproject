@@ -1,5 +1,5 @@
 library(plotly)
-df <- read.csv("../data/extinctlanguages.csv")
+df <- read.csv("data/extinctlanguages.csv")
 
 # geo styling
 g <- list(

@@ -6,7 +6,7 @@ library(dplyr)
 
 #Source files
 source("ui.R")
-source("analysis.R")
+source("scripts/analysis.R")
 
 #Define Server
 server <- shinyServer(function(input, output, session) {

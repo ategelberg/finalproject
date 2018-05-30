@@ -3,13 +3,12 @@ library(tidyr)
 library(dplyr)
 
 #Source function scripts
-source("coords2country.R")
-source("world_map.R")
+source("scripts/coords2country.R")
 
 #Read in data
-extinct_lang <- read.csv("../data/extinctlanguages.csv", stringsAsFactors = F)
-extinct_lang_cities <- read.csv("../data/languages_cities.csv", stringsAsFactors = F)
-countries<- read.csv(("../data/countries.csv"), stringsAsFactors = F)
+extinct_lang <- read.csv("data/extinctlanguages.csv", stringsAsFactors = F)
+extinct_lang_cities <- read.csv("data/languages_cities.csv", stringsAsFactors = F)
+countries<- read.csv(("data/countries.csv"), stringsAsFactors = F)
 
 #merge datasets
 extinct_lang_merged <- left_join(extinct_lang, extinct_lang_cities, by = "ID")
