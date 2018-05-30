@@ -1,4 +1,4 @@
-intro <- The total number of contemporary languages in the world is unknown. Language is
+intro <- ("The total number of contemporary languages in the world is unknown. Language is
 a vital part of humanity. We use language on a daily basis to communicate with
 our loved ones, send emails to colleagues and catch up on literature. Language
 has the power to connect people from all corners of the globe. It is essential to
@@ -25,3 +25,4 @@ countries where this language is spoken will appear under the language name. Usi
 the tools around the map, users are able to only show specific degrees of endangerment
 or just display data for a single country. These tools are useful when users are
 trying to look for a language in a specific country or with a specific endangerment level.
+")
