@@ -8,69 +8,59 @@ source("analysis.R")
 #Define UI
 ui <- shinyUI(fluidPage(
   
-  h1("Near Exctinct World Languages"),
+  titlePanel("Near Exctinct World Languages"),
   
   p("The data that was used for this visualization talks about different languages around the world that are close to being considered extinct."),
   
   h2("Filter"),
   
-  selectInput("filter_countries",
-              label = "Countries Spoken",
-              choices = sort(spoken_countries),
-              selected = 1,
-              multiple = TRUE),
-  
-  br(),
-  
-  sliderTextInput("filter_endangerment", 
-              label = "Degree of Endangerment",
-              choices = danger_levels,
-              selected = danger_levels[c(1, 5)]),
-  
-  br(),
-  
-  sliderInput("filter_speakers", 
-              label = "Number of Speakers", 
-              min = 0, 
-              max = 7500000, 
-              value = c(0, 7500000)),
-  
-  br(),
-  
-  hr(),
-  
-  h2("Display"),
-  
-  br(),
-  
-  fluidRow(
-    column(4,
-           
-           checkboxGroupInput("display_languages", 
-                              label = "Other Languages", 
-                              choices = list("Spanish" = 1, 
-                                             "French" = 2))
-           
-           ),
+  sidebarLayout(
     
-    column(4,
-           
-           checkboxGroupInput("display_location",
-                              label = "Location:",
-                              choices = list("City" = 1,
-                                             "Country" = 2,
-                                             "Lat, Long" = 3))
-           
-           ),
-    column(4, 
-           
-           checkboxGroupInput("display_other",
-                              label = "Other Options:",
-                              choices = list("Countires Spoken" = 1,
-                                             "Language Description" = 2,
-                                             "Total Speakers" = 3,
-                                             "Endangerment" = 4))
-           
-           ))
-  )
+    sidebarPanel(
+      
+      selectInput("filter_countries",
+                  label = "Countries Spoken",
+                  choices = sort(spoken_countries),
+                  selected = "United States of America",
+                  multiple = TRUE),
+      
+      actionButton("filter_all", "All"),
+      actionButton("filter_clear", "Clear"),
+      
+      br(),
+      
+      sliderTextInput("filter_endangerment", 
+                      label = "Degree of Endangerment",
+                      choices = list("Vulnerable" = 1,
+                                     "Definately endangered" = 2,
+                                     "Severely endangered" = 3,
+                                     "Critically endangered" = 4,
+                                     "Extinct" = 5),
+                      selected = c(1, 5)),
+      
+      p(paste0("1: Vulernable",
+        "2: Definitely Endangered",
+        "3: Severely Endangered",
+        "4: Critically Endangered",
+        "5: Extinct")),
+      
+      br(),
+      
+      sliderInput("filter_speakers", 
+                  label = "Number of Speakers", 
+                  min = 0, 
+                  max = 7500000, 
+                  value = c(0, 7500000)),
+      
+      br()
+      
+    ),
+    
+    mainPanel(
+      
+      plotlyOutput("world_map")
+      
+    )
+    
+  ))
 )
