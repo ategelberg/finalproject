@@ -46,3 +46,6 @@ for(i in 1:sapply(expanded_countries, NROW)) {
     }
   }
 }
+
+#total number of languages
+total_lang <- nrow(extinct_lang)
